@@ -1,7 +1,6 @@
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from typing import Any, Literal
-
-from tomlkit import datetime
 
 # datatypes, event shapes, allowed event names
 # for - starting/finishing, query generation, call API, normalization, deduplication, storing in psql
@@ -12,6 +11,6 @@ EventType = Literal["starting", "finishing", "query_generation", "call_api", "no
 class MonitoringEvent:
     run_id: str
     event_type: EventType
-    timestamp: str = field(default_factory=lambda: datetime.now().isoformat())
     payload: dict[str, Any]
+    timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     err: str | None = None
