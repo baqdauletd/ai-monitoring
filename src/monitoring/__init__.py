@@ -1,9 +1,10 @@
-from .contract import EventType, MonitoringEvent
-from .logger import log_event, log_query_generation
+from .contract import EventLevel, MonitoringEvent
+from .logger import event_to_dict, event_to_json, log_event
 
 __all__ = [
-    "EventType",
+    "EventLevel",
     "MonitoringEvent",
+    "event_to_dict",
+    "event_to_json",
     "log_event",
-    "log_query_generation",
 ]
